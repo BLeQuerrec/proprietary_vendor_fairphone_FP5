@@ -1,0 +1,9 @@
+service ftycmd_check /vendor/bin/ftycmd checkKB
+    oneshot
+    disabled
+    user system
+    class system
+
+
+on boot
+    start ftycmd_check

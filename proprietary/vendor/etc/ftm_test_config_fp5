@@ -1,0 +1,219 @@
+tc 10
+#MIC1
+!Capture
+Txdevice:0
+
+enable
+TX_DEC0 Volume:102
+TX DEC0 MUX:SWR_MIC
+TX SMIC MUX0:SWR_MIC0
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC0:1
+ADC1 ChMap:SWRM_TX1_CH1
+ADC1_MIXER Switch:1
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+
+disable
+TX_DEC0 Volume:84
+TX DEC0 MUX:ZERO
+TX SMIC MUX0:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC0:0
+ADC1 ChMap:ZERO
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+ADC1_MIXER Switch:0
+
+
+tc 11
+#MIC2
+!Capture
+Txdevice:0
+
+enable
+TX_DEC1 Volume:102
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC1
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:1
+ADC2 ChMap:SWRM_TX1_CH2
+ADC2_MIXER Switch:1
+ADC2 MUX:INP3
+HDR12 MUX:NO_HDR12
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+
+disable
+TX_DEC1 Volume:84
+TX DEC1 MUX:ZERO
+TX SMIC MUX1:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:0
+ADC2 ChMap:ZERO
+ADC2_MIXER Switch:0
+ADC2 MUX:ZERO
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+
+tc 12
+#MIC3
+!Capture
+Txdevice:0
+
+enable
+TX_DEC2 Volume:102
+TX DEC2 MUX:SWR_MIC
+ADC3 ChMap:SWRM_TX2_CH1
+TX SMIC MUX2:SWR_MIC4
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC2:1
+ADC3_MIXER Switch:1
+HDR34 MUX:NO_HDR34
+ADC3 MUX:INP4
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+
+disable
+TX_DEC2 Volume:84
+TX DEC2 MUX:ZERO
+ADC3 ChMap:ZERO
+TX SMIC MUX2:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC2:0
+ADC3_MIXER Switch:0
+ADC3 MUX:ZERO
+HDR34 MUX:NO_HDR34
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+
+tc 55
+# mic1 to Rcv
+# AFE loopback mic1 to  Rcv
+!AfeLoop
+LoopVol:75
+Txdevice:31
+Rxdevice:0
+
+enable
+TX_DEC0 Volume:102
+TX DEC0 MUX:SWR_MIC
+TX SMIC MUX0:SWR_MIC0
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC0:1
+ADC1 ChMap:SWRM_TX1_CH1
+ADC1_MIXER Switch:1
+
+aw_dev_0_prof:Receiver
+aw_dev_0_switch:Enable
+aw_dev_1_switch:Disable
+
+QUIN_MI2S_RX Audio Mixer MultiMedia1:1
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+QUIN_MI2S_RX_DL_HL Switch:1
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:1
+
+disable
+QUIN_MI2S_RX_DL_HL Switch:0
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:0
+QUIN_MI2S_RX Audio Mixer MultiMedia1:0
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+
+TX_DEC0 Volume:84
+TX DEC0 MUX:ZERO
+TX SMIC MUX0:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC0:0
+ADC1 ChMap:ZERO
+ADC1_MIXER Switch:0
+
+aw_dev_0_prof:Music
+aw_dev_0_switch:Disable
+
+
+tc 56
+# mic2 to  speaker
+# AFE loopback mic2 to  speaker
+!AfeLoop
+LoopVol:70
+Txdevice:31
+Rxdevice:0
+
+enable
+TX_DEC1 Volume:102
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC1
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:1
+ADC2 ChMap:SWRM_TX1_CH2
+ADC2_MIXER Switch:1
+ADC2 MUX:INP3
+HDR12 MUX:NO_HDR12
+
+aw_dev_1_prof:Music
+aw_dev_1_switch:Enable
+
+QUIN_MI2S_RX Audio Mixer MultiMedia1:1
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+QUIN_MI2S_RX_DL_HL Switch:1
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:1
+
+disable
+QUIN_MI2S_RX_DL_HL Switch:0
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:0
+QUIN_MI2S_RX Audio Mixer MultiMedia1:0
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+
+TX_DEC1 Volume:84
+TX DEC1 MUX:ZERO
+TX SMIC MUX1:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:0
+ADC2 ChMap:ZERO
+ADC2_MIXER Switch:0
+ADC2 MUX:ZERO
+
+aw_dev_1_prof:Music
+aw_dev_1_switch:Disable
+
+
+tc 57
+# mic3 to  Speaker
+# AFE loopback mic3 to  spk
+!AfeLoop
+LoopVol:70
+Txdevice:31
+Rxdevice:0
+
+enable
+TX_DEC1 Volume:102
+TX DEC1 MUX:SWR_MIC
+TX SMIC MUX1:SWR_MIC4
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:1
+ADC3 ChMap:SWRM_TX2_CH1
+ADC3_MIXER Switch:1
+ADC3 MUX:INP4
+HDR34 MUX:NO_HDR34
+
+aw_dev_1_prof:Music
+aw_dev_1_switch:Enable
+
+QUIN_MI2S_RX Audio Mixer MultiMedia1:1
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:1
+QUIN_MI2S_RX_DL_HL Switch:1
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:1
+
+disable
+aw_dev_1_prof:Music
+aw_dev_1_switch:Disable
+
+QUIN_MI2S_RX_DL_HL Switch:0
+QUIN_MI2S_RX Port Mixer TX_CDC_DMA_TX_3:0
+QUIN_MI2S_RX Audio Mixer MultiMedia1:0
+MultiMedia1 Mixer TX_CDC_DMA_TX_3:0
+
+TX_DEC1 Volume:84
+TX DEC1 MUX:ZERO
+TX SMIC MUX1:ZERO
+TX_CDC_DMA_TX_3 Channels:One
+TX_AIF1_CAP Mixer DEC1:0
+ADC3 ChMap:ZERO
+ADC3_MIXER Switch:0
+ADC3 MUX:ZERO
+HDR34 MUX:NO_HDR34
+
